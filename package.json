@@ -1,0 +1,26 @@
+{
+  "name": "eve-manager-api",
+  "version": "1.0.0",
+  "description": "EVE Manager API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheater001/eve-manager-api.git"
+  },
+  "keywords": [
+    "EVE",
+    "API"
+  ],
+  "author": "midtsev@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheater001/eve-manager-api/issues"
+  },
+  "homepage": "https://github.com/cheater001/eve-manager-api#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

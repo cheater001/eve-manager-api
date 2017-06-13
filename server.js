@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
 
-const app = express();
+const Payload = require('./utils').Payload;
 
-const oauthHostname = 'login.eveonline.com';
-
-const jsonParser = bodyParser.json();
-
+const OAUTH_HOSTNAME = 'login.eveonline.com';
 const CLIENT_ID = 'afdaef5c2f514ef4b1977ad6c2d02757';
 const CLIENT_SECRET = 'D865F2UZXgJxzLMT2xcBUCvBSaWrcf0hvqbXWeMq';
+const jsonParser = bodyParser.json();
+
+const app = express();
 
 app.use(cors({
   origin: 'http://localhost:4200'
@@ -19,6 +19,10 @@ app.use(cors({
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
+});
+
+app.get('/login/verify', function (req, res) {
+  res.send('Ok');
 });
 
 app.post('/login/verify', jsonParser, function (req1, res1) {
@@ -29,7 +33,7 @@ app.post('/login/verify', jsonParser, function (req1, res1) {
   };
 
   const req = https.request({
-    hostname: oauthHostname,
+    hostname: OAUTH_HOSTNAME,
     path: '/oauth/token',
     method: 'POST',
     headers: {
@@ -42,7 +46,8 @@ app.post('/login/verify', jsonParser, function (req1, res1) {
     res.on('data', function(chunk) {
       bodyChunks.push(chunk);
     }).on('end', function() {
-      res1.send(Buffer.concat(bodyChunks));
+      res1.send(new Payload(Buffer.concat(bodyChunks)));
+      // res1.send(Buffer.concat(bodyChunks));
     })
   });
 

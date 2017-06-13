@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/cheater001/eve-manager-api#readme",
   "dependencies": {
+    "async": "^2.4.1",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
     "express": "^4.15.3"
   }
 }
